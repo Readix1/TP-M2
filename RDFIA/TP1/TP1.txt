@@ -1,0 +1,31 @@
+TP 1 RDFIA
+
+1.1 
+
+Mx est un masque a appliqué sur tous les pixels de l'image pour obtenir une approximation de la derivée
+idem pour My
+
+1) Mx = (1 2 1)T . (-1 0 1)
+My = (-1 0 1)T . ( 1 2 1)
+
+2) pour passer de 9 à 6 opération :
+Ix = I * Mx = I * (hyT x hx) = (I*hx)*hy
+
+3) pour rendre plus important les pixels au milieu du masque
+
+4) Pour rendre le vecteur histogram plus petit
+et rend moins sensible aux petites variations
+
+5)les petites valeurs sont ignorées pour retirer le bruit/les valeurs non significatives
+normalisation pour etre indépendant de la luminosité et mieux généraliser
+et on enleve la valeur max pour eviter d'en avoir une trop grande par rapport aux autres
+
+6) c'est une bonne facon de pouvoir comparer les bouts d'image entre eux
+dans le but de faire de l'apprentissage dessus. On garde suffisamment d'information sur les directions et les normes
+pour en faire quelque chose
+
+7) sur une région de l'image on regarde les angles des gradients. les 8 premiers x de l'histogramme sont les 8 premiers angles de la
+case en haut a gauche de l'image. La hauteur des piques est l'intensité de l'angle dans une région de l'image.
+Gradient module représente l'intensité des normes en chaque point et Gradient orientation l'orientation du gradient au point donné.
+
+

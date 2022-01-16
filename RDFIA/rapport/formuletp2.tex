@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\title{TP 2}
+\author{Jouve Vincent 3671083 Lenoir Romain 3670199}
+\date{}
+\graphicspath{ {./} }
+
+\begin{document} 
+\maketitle 
+$x\times
+y\times
+z\times
+\left \lceil{\frac{2p + x - k}{s}+1}\right \rceil\times 
+\left \lceil{\frac{2p + y - k}{s}+1}\right \rceil\times1$
+
+\newpage
+
+\begin{align*}
+- \sum_{i} y_i \log \frac{e^\tilde{y}_i} {\sum_{k} e^\tilde{y}_k} &=
+- \sum_{i} y_i (\log ({e^\tilde{y}_i}) - \log (\sum_{k} {e^\tilde{y}_k}) ) \\ 
+&=-\sum_{i} {y_i \tilde{y}_i - y_i\log{({\sum_{k} {e^{\tilde{y}_k}}})}} \\
+&= -\sum_{i} {y_i \tilde{y}_i + \sum_{i} y_i \log{({\sum_{k} {e^{\tilde{y}_k}}})}} \\
+&= -\sum_{i} {y_i \tilde{y}_i + \log{({\sum_{k} {e^{\tilde{y}_k}}})}} $ because $  y_i = 0 
+$ for all classes except one $
+\end{align*}
+
+\newpage
+
+\begin{align*}
+\frac{\partial l}{\partial \tilde{y}_i} &= -y_i + \frac{e^\tilde{y}_i} {\sum_{k} e^\tilde{y}_k} \\
+&= \hat{y}_i - y_i
+\end{align*}
+
+\newpage
+
+
+$\nabla_{\tilde{y}} l=\begin{bmatrix}
+\frac{\partial l}{\partial \tilde{y}_1}\\
+\vdots \\
+\frac{\partial n}{\partial \tilde{y}_n}
+\end{bmatrix}
+=\begin{bmatrix}
+\hat{y}_1 - y_1 \\
+\vdots \\
+\hat{y}_n - y_n \\
+\end{bmatrix}$
+
+\newpage
+\begin{align*}
+\tilde{y}_k &= \sum_{m} w_{y,km} \times h_m +b_k \\
+\\
+$ so $ \frac{\partial \tilde{y}_i}{\partial w_{y,ij}}&= h_j $ and $ \frac{\partial \tilde{y}_k}{\partial w_{y,ij}}= 0 $ k $ \neq i\\
+ \\
+$ so $ \frac{\partial l}{\partial w_{y,ij}} &= \sum_{k}
+\frac{\partial l}{\partial \tilde{y}_k} \frac{\partial \tilde{y}_k}{\partial w_{y,ij}}\\ &= \frac{\partial l}{\partial \tilde{y}_i} \times h_j \\ \\
+$ and $ \frac{\partial \tilde{y}_i}{\partial b_{y,i}}&= 1 $ and $ \frac{\partial \tilde{y}_k}{\partial b_{y,i}}= 0 $ k $ \neq i\\ 
+\\
+\frac{\partial l}{\partial b_{y,i}} &= \sum_{k} \frac{\partial l}{\partial \tilde{y}_k} \frac{\partial \tilde{y}_k}{\partial b_{y,i}} \\
+&= \frac{\partial l}{\partial \tilde{y}_i}
+\end{align*}
+$\nabla_{w_{y,ij}} l=\begin{bmatrix}
+\frac{\partial l}{\partial w_{y,11}} & \hdots & \frac{\partial l}{\partial w_{y,1n_h}}\\
+\vdots & \ddots &  \vdots \\
+\frac{\partial l}{\partial w_{y,n_y1}} & \hdots & \frac{\partial l}{\partial w_{y,n_yn_h}}
+\end{bmatrix}
+=\begin{bmatrix}
+(\hat{y}_1 - y_1)h_1 & \hdots & (\hat{y}_1 - y_1)h_{n_h} \\
+\vdots & \ddots &  \vdots \\
+(\hat{y}_{n_y} - y_{n_y})h_1 & \hdots & (\hat{y}_{n_y} - y_{n_y})h_{n_h}
+\end{bmatrix}$
+\\
+$\nabla_{b_{y,j}} l=\begin{bmatrix}
+\frac{\partial l}{\partial b_{y,1}} \\
+\vdots \\
+\frac{\partial l}{\partial b_{y,n_y}} 
+\end{bmatrix}
+=\begin{bmatrix}
+\hat{y}_1 - y_1 \\
+\vdots \\
+\hat{y}_{n_y} - y_{n_y} 
+\end{bmatrix}$
+
+\newpage
+\begin{align*}
+\nabla_{\tilde{h}} l&=\begin{bmatrix}
+(1-tanh^2(\tilde{h}_1)) \sum_{i} \frac {\partial l}{\partial w_{y,i1}} \\
+\vdots \\
+(1-tanh^2(\tilde{h}_{n_h})) \sum_{i} \frac {\partial l}{\partial w_{y,i{n_h}}} 
+\end{bmatrix} 
+\\
+\nabla_{w_{h,ij}} l&=\begin{bmatrix}
+\frac {\partial l}{\partial h_{1}} x_1 & \hdots & \frac {\partial l}{\partial h_{1}}x_{n_x} \\
+\vdots & \ddots & \vdots  \\
+\frac {\partial l}{\partial h_{n_h}} x_{1} & \hdots &  \frac {\partial l}{\partial h_{n_h}} x_{n_x}
+\end{bmatrix}
+\\
+\nabla_{b_{h,i}} l&=\begin{bmatrix}
+\frac {\partial l}{\partial h_{1}} \\
+\vdots \\
+\frac {\partial l}{\partial h_{n_h}}
+\end{bmatrix}
+\end{align*}
+\end{document}

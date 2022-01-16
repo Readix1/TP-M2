@@ -1,0 +1,31 @@
+1.train pour train le modèle et donc les paramètres du modèle
+val pour trouver les meilleurs hyper-paramètres pour l'apprentissage
+et test pour avoir une mesure de qualité du modèle
+
+2.Plus on a d'exemple plus on connait le monde que l'on veut prédire et meilleurs pourra être le modéle que l'on apprend.
+
+3.permet d'obtenir la non linéairité. si on effectue plusieurs transformation linéaire à la suite, ça revient au même que d'en faire une seule
+(produit de matrice, donne une matrice)
+
+4. 2,4,2
+pour les tailles d'entrée et de sortie on a pas vraiment le choix cela depend de la taille des entrées et la sortie dépend de ce que l'on desir
+pour les chouche intermediaire c'est un hyper paramètre à apprendre.
+
+5. ^y est la sortie du modéle, (predict) et le y c'est le vrai label des exemples(supervisée)
+
+6.multiclass -> softmax peut etre interpreté comme
+
+7.sur feuille
+
+8.il faut que ^y tende vers y
+
+9.regression mse prenalise plus grandement les grands écarts donc bien pour la regression car on veut être proche de la valeur réelle
+log mieux pour la classifie car sur des probas
+
+10.
+batch plus stable mais convergence plus lente, voir très lente si enormement de d'exemple
+online moins stable(si bruit on conrrige quand meme mais pas forcement dans le bon sens), mais convergence rapide
+mini-batch compromis (on moyen, donc efface le bruit s'il y a), et pas trop long car un nombre restraint d'exemple
+
+11.ça influence la vitesse de l'optimisation, mais attention si trop petit on converge lentement, mais si trop grand on risque de faire des pas
+trop grand et donc de ne pas converger
